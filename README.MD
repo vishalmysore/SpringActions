@@ -25,5 +25,5 @@ At runtime spring will create this service and call it with appropriate values i
 and then
 ```mvn spring-boot:run```
 
-![plot](swagger.png)
+<img src="swagger.png">
 
