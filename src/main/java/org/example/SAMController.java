@@ -19,8 +19,8 @@ public class SAMController {
     private ApplicationContext applicationContext;
     @GetMapping("/action")
     public String actOnPrompt(@RequestParam("prompt") String prompt) {
-        System.out.println(applicationContext);
-        System.out.println(PredictionLoader.getInstance(applicationContext).getActionNameList());
+
+        PredictionLoader.getInstance(applicationContext);
         ActionProcessor processor = new ActionProcessor();
         try {
             return (String) processor.processSingleAction(prompt);
