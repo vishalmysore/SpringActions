@@ -2,7 +2,8 @@
 
 Integrate your spring application with AI actions , uses Tools4AI platform 
 
-Any Spring bean will be used as aciton for matching prompt , you dont need to define it separately 
+Any Spring bean can be used as an action for matching prompt , you dont need to define it separately  , for example 
+here we are creating a spring service called Compare car service, this will compare 2 cars and return the best car (in real world)
 
 ```
 @Service
