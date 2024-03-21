@@ -25,5 +25,8 @@ At runtime spring will create this service and call it with appropriate values i
 and then
 ```mvn spring-boot:run```
 
+Once you visit http://localhost:8080/swagger-ui/index.html and provide any prompt appropriate action will be called 
+
+
 <img src="swagger.PNG">
 
