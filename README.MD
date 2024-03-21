@@ -20,6 +20,24 @@ public class CompareCarService implements JavaMethodAction {
 
 At runtime spring will create this service and call it with appropriate values if the prompt matches the action
 
+```
+ @Autowired
+    private ApplicationContext applicationContext;
+    @GetMapping("/action")
+    public String actOnPrompt(@RequestParam("prompt") String prompt) {
+
+        PredictionLoader.getInstance(applicationContext);
+        ActionProcessor processor = new ActionProcessor();
+        try {
+            return (String) processor.processSingleAction(prompt);
+        } catch (AIProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+    } 
+```
+As you can see the controller does not need to have the service instances , its mapped by Tools4AI automatically based on prompts
+
 ## set up
 ``` mvn clean install```
 
