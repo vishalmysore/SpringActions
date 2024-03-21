@@ -18,3 +18,12 @@ public class CompareCarService implements JavaMethodAction {
 ```
 
 At runtime spring will create this service and call it with appropriate values if the prompt matches the action
+
+## set up
+``` mvn clean install```
+
+and then
+```mvn spring-boot:run```
+
+![plot](swagger.png)
+
