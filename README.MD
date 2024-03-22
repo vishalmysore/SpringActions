@@ -60,3 +60,7 @@ Once you visit http://localhost:8080/swagger-ui/index.html and provide any promp
 
 <img src="swagger.PNG">
 
+Sending Multiple Prompts and converting them into Pojo directly before calling service 
+
+<img src="swagger2.PNG">
+
