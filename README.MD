@@ -7,36 +7,40 @@ here we are creating a spring service called Compare car service, this will comp
 
 ```
 @Service
-@Predict(actionName ="compareCar", description = "Provide persons name and then find out what does that person like")
+@Log
+@Predict(actionName ="compareCar", description = "Provide 2 cars and compare them")
 public class CompareCarService implements JavaMethodAction {
     public String compareCar(String car1 , String car2) {
-        System.out.println("this is car 1 "+car1);
-        System.out.println("this is car 2"+car2);
+        log.info(car2);
+        log.info(car1);
+        // implement the comparison logic here
         return car2;
     }
 }
+
 
 ```
 
 At runtime spring will create this service and call it with appropriate values if the prompt matches the action
 
 ```
- @Autowired
+   @Autowired
     private ApplicationContext applicationContext;
     @GetMapping("/action")
     public String actOnPrompt(@RequestParam("prompt") String prompt) {
-
-        PredictionLoader.getInstance(applicationContext);
-        ActionProcessor processor = new ActionProcessor();
+        SpringAwareActionProcessor processor = new SpringAwareActionProcessor(applicationContext);
         try {
             return (String) processor.processSingleAction(prompt);
         } catch (AIProcessingException e) {
             throw new RuntimeException(e);
         }
 
-    } 
+    }
 ```
 As you can see the controller does not need to have the service instances , its mapped by Tools4AI automatically based on prompts
+At runtime ```SpringAwareActionProcessor``` takes care of mapping prompts to Spring Beans , they can either be spring bean service
+or a component
+
 
 ## set up
 ``` mvn clean install```
