@@ -1,6 +1,6 @@
 ## Spring Action
 
-Integrate your spring application with AI actions , uses Tools4AI platform 
+Integrate your spring application with AI actions , uses Tools4AI (https://github.com/vishalmysore/Tools4AI/) platform 
 
 Any Spring bean can be used as an action for matching prompt , you dont need to define it separately  , for example 
 here we are creating a spring service called Compare car service, this will compare 2 cars and return the best car (in real world)
@@ -41,6 +41,13 @@ As you can see the controller does not need to have the service instances , its 
 At runtime ```SpringAwareActionProcessor``` takes care of mapping prompts to Spring Beans , they can either be spring bean service
 or a component
 
+Also you can convert any prompt to Java Pojo
+
+``` 
+String promptText ="can you book maharaja restaurant for 4 people on Indian Independence day in Toronto , my name is Vishal ";
+PojoBuilder processor = new PojoBuilder();
+RestaurantPojo pojo = (RestaurantPojo)processor.buildPojo(promptText,RestaurantPojo.class.getName(),"RestaurantPojo","Build the pojo for restaurant")
+```
 
 ## set up
 ``` mvn clean install```
