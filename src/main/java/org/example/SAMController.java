@@ -1,7 +1,8 @@
 package org.example;
 
-import com.t4a.predict.PojoBuilder;
+
 import com.t4a.predict.PredictionLoader;
+import com.t4a.predict.PromptTransformer;
 import com.t4a.processor.AIProcessingException;
 import com.t4a.processor.ActionProcessor;
 import com.t4a.processor.SpringAwareActionProcessor;
@@ -47,9 +48,9 @@ public class SAMController {
 
     @GetMapping("/bookRestaurant")
     public String bookRestaurant(@RequestParam("prompt") String prompt) {
-        PojoBuilder processor = new PojoBuilder();
+        PromptTransformer processor = new PromptTransformer();
         try {
-            return restaurantBookingService.bookReservation((RestaurantPojo)processor.buildPojo(prompt,RestaurantPojo.class.getName(),"RestaurantPojo","Build the pojo for restaurant") );
+            return restaurantBookingService.bookReservation((RestaurantPojo) processor.transformIntoPojo(prompt,RestaurantPojo.class.getName(),"RestaurantPojo","Build the pojo for restaurant") );
         } catch (AIProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -58,11 +59,11 @@ public class SAMController {
 
     @GetMapping("/bookRestaurantWithDetails")
     public String findCustomerDetails(@RequestParam("restaurantDetails") String restaurantDetails,@RequestParam("customerDetails") String customerDetails) {
-        PojoBuilder processor = new PojoBuilder();
+        PromptTransformer processor = new PromptTransformer();
         try {
-            Customer customer = (Customer)processor.buildPojo(customerDetails,Customer.class.getName(),"Customer","Get the customer details");
+            Customer customer = (Customer)processor.transformIntoPojo(customerDetails,Customer.class.getName(),"Customer","Get the customer details");
             log.info(customer.toString());
-            return restaurantBookingService.bookReservation((RestaurantPojo)processor.buildPojo(restaurantDetails,RestaurantPojo.class.getName(),"RestaurantPojo","Build the pojo for restaurant") );
+            return restaurantBookingService.bookReservation((RestaurantPojo)processor.transformIntoPojo(restaurantDetails,RestaurantPojo.class.getName(),"RestaurantPojo","Build the pojo for restaurant") );
         } catch (AIProcessingException e) {
             throw new RuntimeException(e);
         }
