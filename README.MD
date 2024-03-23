@@ -57,6 +57,7 @@ and then
 
 Once you visit http://localhost:8080/swagger-ui/index.html and provide any prompt appropriate action will be called 
 
+For example in below case car compare service will be called automatically based on the prompt
 
 <img src="swagger.PNG">
 
