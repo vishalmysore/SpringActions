@@ -6,6 +6,11 @@ import com.t4a.predict.PromptTransformer;
 import com.t4a.processor.AIProcessingException;
 import com.t4a.processor.ActionProcessor;
 import com.t4a.processor.SpringAwareActionProcessor;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -21,10 +26,21 @@ import org.springframework.web.bind.annotation.RestController;
 @Log
 @RestController
 public class SAMController {
+
     @Autowired
     private ApplicationContext applicationContext;
     @Autowired
     private RestaurantBookingService restaurantBookingService;
+    @Operation(summary = "Execute any action based on prompt", description = " Try out with any of these prompts <br>" +
+            " 1) My Customer name is Vishal , his computer needs repair <br>" +
+            " 2) Can you compare Honda City to Toyota Corolla <br>" +
+            " 3) Can i Go out without Jacket in Toronto today <br> " +
+            " 4) what would vishal want to eat today? "
+    )
+    @ApiResponses(value = {
+
+
+    })
     @GetMapping("/action")
     public String actOnPrompt(@RequestParam("prompt") String prompt) {
         SpringAwareActionProcessor processor = new SpringAwareActionProcessor(applicationContext);
