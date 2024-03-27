@@ -86,4 +86,22 @@ public class SAMController {
 
     }
 
+    @GetMapping("/getAllActions")
+    public String getAllActions() {
+         ActionProcessor processor = new ActionProcessor();
+         return processor.getActionList();
+    }
+
+    @GetMapping("/actionWithName")
+    public String actOnPrompt(@RequestParam("prompt") String prompt, @RequestParam("actionName") String actionName) {
+        SpringAwareActionProcessor processor = new SpringAwareActionProcessor(applicationContext);
+        try {
+            return (String) processor.processSingleAction(prompt,actionName);
+        } catch (AIProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
 }

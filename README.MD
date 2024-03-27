@@ -1,4 +1,6 @@
-## Spring Action
+# Spring Action
+
+## 💡 Quick Start
 
 Integrate your spring application with AI actions , uses Tools4AI (https://github.com/vishalmysore/Tools4AI/) platform 
 
@@ -47,9 +49,10 @@ Also you can convert any prompt to Java Pojo
 String promptText ="can you book maharaja restaurant for 4 people on Indian Independence day in Toronto , my name is Vishal ";
 PojoBuilder processor = new PojoBuilder();
 RestaurantPojo pojo = (RestaurantPojo)processor.buildPojo(promptText,RestaurantPojo.class.getName(),"RestaurantPojo","Build the pojo for restaurant")
-```
+```  
 
-## set up
+
+## 📝 set up
 ``` mvn clean install```
 
 and then
@@ -63,5 +66,52 @@ For example in below case car compare service will be called automatically based
 
 Sending Multiple Prompts and converting them into Pojo directly before calling service 
 
-<img src="swagger2.PNG">
+<img src="swagger2.PNG">  
 
+
+<br>   
+
+
+## ✍️ Examples
+
+Create new action everytime intead of bean created by Spring
+```
+@Autowired
+private ApplicationContext applicationContext;
+@GetMapping("/action")
+public String actOnPrompt(@RequestParam("prompt") String prompt) {
+ActionProcessor processor = new ActionProcessor();
+try {
+return (String) processor.processSingleAction(prompt);
+} catch (AIProcessingException e) {
+throw new RuntimeException(e);
+}
+
+    }
+
+```
+
+Get List of all available actions
+```
+    @GetMapping("/getAllActions")
+    public String getAllActions() {
+         ActionProcessor processor = new ActionProcessor();
+         return processor.getActionList();
+    }
+
+```
+Specify action name instead of action being predicted 
+
+```
+ @GetMapping("/actionWithName")
+    public String actOnPrompt(@RequestParam("prompt") String prompt, @RequestParam("actionName") String actionName) {
+        SpringAwareActionProcessor processor = new SpringAwareActionProcessor(applicationContext);
+        try {
+            return (String) processor.processSingleAction(prompt,actionName);
+        } catch (AIProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+```
