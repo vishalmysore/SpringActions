@@ -1,11 +1,11 @@
 package org.example;
 
 
+import com.t4a.predict.GeminiPromptTransformer;
 import com.t4a.predict.PredictionLoader;
 import com.t4a.predict.PromptTransformer;
-import com.t4a.processor.AIProcessingException;
-import com.t4a.processor.ActionProcessor;
-import com.t4a.processor.SpringAwareActionProcessor;
+import com.t4a.processor.*;
+
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
@@ -43,7 +43,28 @@ public class SAMController {
     })
     @GetMapping("/action")
     public String actOnPrompt(@RequestParam("prompt") String prompt) {
-        SpringAwareActionProcessor processor = new SpringAwareActionProcessor(applicationContext);
+        AIProcessor processor = new SpringGeminiProcessor(applicationContext);
+        try {
+            return (String) processor.processSingleAction(prompt);
+        } catch (AIProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Operation(summary = "Execute any action based on prompt", description = " Try out with any of these prompts <br>" +
+            " 1) My Customer name is Vishal , his computer needs repair <br>" +
+            " 2) Can you compare Honda City to Toyota Corolla <br>" +
+            " 3) Can i Go out without Jacket in Toronto today <br> " +
+            " 4) what would vishal want to eat today? "
+    )
+    @ApiResponses(value = {
+
+
+    })
+    @GetMapping("/actionOpenAI")
+    public String actOnPromptWithOpenAI(@RequestParam("prompt") String prompt) {
+        AIProcessor processor = new SpringOpenAIProcessor(applicationContext);
         try {
             return (String) processor.processSingleAction(prompt);
         } catch (AIProcessingException e) {
@@ -54,7 +75,7 @@ public class SAMController {
 
     @PostMapping("/action")
     public String actOnPromptWithPost(  @RequestParam("car1") String car1,  @RequestParam("car2") String car2) {
-        SpringAwareActionProcessor processor = new SpringAwareActionProcessor(applicationContext);
+        ActionProcessor processor = new SpringGeminiProcessor(applicationContext);
         try {
             return (String) processor.processSingleAction(" This is car1 "+car1+" this is car2 "+car2);
         } catch (AIProcessingException e) {
@@ -64,7 +85,7 @@ public class SAMController {
 
     @GetMapping("/bookRestaurant")
     public String bookRestaurant(@RequestParam("prompt") String prompt) {
-        PromptTransformer processor = new PromptTransformer();
+        PromptTransformer processor = new GeminiPromptTransformer();
         try {
             return restaurantBookingService.bookReservation((RestaurantPojo) processor.transformIntoPojo(prompt,RestaurantPojo.class.getName(),"RestaurantPojo","Build the pojo for restaurant") );
         } catch (AIProcessingException e) {
@@ -75,7 +96,7 @@ public class SAMController {
 
     @GetMapping("/bookRestaurantWithDetails")
     public String findCustomerDetails(@RequestParam("restaurantDetails") String restaurantDetails,@RequestParam("customerDetails") String customerDetails) {
-        PromptTransformer processor = new PromptTransformer();
+        PromptTransformer processor = new GeminiPromptTransformer();
         try {
             Customer customer = (Customer)processor.transformIntoPojo(customerDetails,Customer.class.getName(),"Customer","Get the customer details");
             log.info(customer.toString());
@@ -94,7 +115,7 @@ public class SAMController {
 
     @GetMapping("/actionWithName")
     public String actOnPrompt(@RequestParam("prompt") String prompt, @RequestParam("actionName") String actionName) {
-        SpringAwareActionProcessor processor = new SpringAwareActionProcessor(applicationContext);
+        ActionProcessor processor = new SpringGeminiProcessor(applicationContext);
         try {
             return (String) processor.processSingleAction(prompt,actionName);
         } catch (AIProcessingException e) {
