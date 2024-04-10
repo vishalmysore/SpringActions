@@ -1,7 +1,8 @@
 package org.example;
 
+import com.t4a.annotations.Predict;
 import com.t4a.api.JavaMethodAction;
-import com.t4a.predict.Predict;
+
 import lombok.extern.java.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,7 +20,7 @@ import java.net.URL;
 public class WeatherService implements JavaMethodAction {
     @Autowired
     SimpleService action;
-    public double getTemperature(String cityName) {
+    public String getTemperature(String cityName) {
         log.info(action+" here ");
         double temperature = 0;
         String urlStr = "https://geocoding-api.open-meteo.com/v1/search?name="+cityName+"&count=1&language=en&format=json";
@@ -63,7 +64,7 @@ public class WeatherService implements JavaMethodAction {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return temperature;
+        return " Temprature for "+cityName+" is "+temperature;
     }
 
     private static StringBuilder getResponseFromURl(String urlStr) throws IOException {

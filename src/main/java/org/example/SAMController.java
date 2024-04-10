@@ -66,7 +66,10 @@ public class SAMController {
     public String actOnPromptWithOpenAI(@RequestParam("prompt") String prompt) {
         AIProcessor processor = new SpringOpenAIProcessor(applicationContext);
         try {
-            return (String) processor.processSingleAction(prompt);
+
+            Object object = processor.processSingleAction(prompt);
+            String answer =  processor.query(prompt,(String)object);
+            return answer;
         } catch (AIProcessingException e) {
             throw new RuntimeException(e);
         }

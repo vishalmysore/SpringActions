@@ -1,7 +1,8 @@
 package org.example;
 
+import com.t4a.annotations.Predict;
 import com.t4a.api.JavaMethodAction;
-import com.t4a.predict.Predict;
+
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,6 @@ public class CompareCarService implements JavaMethodAction {
         log.info(car2);
         log.info(car1);
         // implement the comparison logic here
-        return car2;
+        return " this is better - "+car2;
     }
 }

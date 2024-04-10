@@ -1,7 +1,8 @@
 package org.example;
 
+import com.t4a.annotations.Predict;
 import com.t4a.api.JavaMethodAction;
-import com.t4a.predict.Predict;
+
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,6 @@ import org.springframework.stereotype.Service;
 public class RaiseCustomerTicket implements JavaMethodAction {
     public String raiseTicket(String customerName) {
 
-        return customerName;
+        return "ticket 111 raised for "+customerName;
     }
 }

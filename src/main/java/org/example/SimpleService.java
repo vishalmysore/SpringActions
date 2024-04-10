@@ -1,7 +1,8 @@
 package org.example;
 
+import com.t4a.annotations.Predict;
 import com.t4a.api.JavaMethodAction;
-import com.t4a.predict.Predict;
+
 import org.springframework.stereotype.Service;
 
 @Service

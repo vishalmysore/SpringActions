@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 public class RestaurantBookingService {
     public String bookReservation(RestaurantPojo restaurantPojo){
         log.info(restaurantPojo.toString());
-        return restaurantPojo.toString();
+        return "This has been booked "+restaurantPojo.toString();
     }
 }
