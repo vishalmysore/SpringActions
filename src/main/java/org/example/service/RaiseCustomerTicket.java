@@ -1,4 +1,4 @@
-package org.example;
+package org.example.service;
 
 import com.t4a.annotations.Predict;
 import com.t4a.api.JavaMethodAction;

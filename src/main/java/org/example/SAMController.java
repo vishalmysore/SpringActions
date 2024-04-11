@@ -2,16 +2,15 @@ package org.example;
 
 
 import com.t4a.predict.GeminiPromptTransformer;
-import com.t4a.predict.PredictionLoader;
 import com.t4a.predict.PromptTransformer;
 import com.t4a.processor.*;
 
-import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.ExampleObject;
 import lombok.extern.java.Log;
+import org.example.pojo.Customer;
+import org.example.pojo.RestaurantPojo;
+import org.example.service.RestaurantBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;

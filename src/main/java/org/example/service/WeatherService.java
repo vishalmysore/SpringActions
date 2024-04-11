@@ -1,9 +1,10 @@
-package org.example;
+package org.example.service;
 
 import com.t4a.annotations.Predict;
 import com.t4a.api.JavaMethodAction;
 
 import lombok.extern.java.Log;
+import org.example.service.SimpleService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ import java.net.URL;
 @Log
 @Predict(actionName = "getTemperature",description = "get weather for city")
 public class WeatherService implements JavaMethodAction {
+
+    public WeatherService() {
+        log.info("created weather service");
+    }
+
     @Autowired
     SimpleService action;
     public String getTemperature(String cityName) {
