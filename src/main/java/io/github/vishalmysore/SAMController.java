@@ -1,22 +1,27 @@
-package org.example;
+package io.github.vishalmysore;
 
 
+import com.t4a.api.ActionGroup;
+import com.t4a.api.GroupInfo;
 import com.t4a.predict.GeminiPromptTransformer;
+import com.t4a.predict.PredictionLoader;
 import com.t4a.predict.PromptTransformer;
 import com.t4a.processor.*;
 
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.java.Log;
-import org.example.pojo.Customer;
-import org.example.pojo.RestaurantPojo;
-import org.example.service.RestaurantBookingService;
+import io.github.vishalmysore.pojo.Customer;
+import io.github.vishalmysore.pojo.RestaurantPojo;
+import io.github.vishalmysore.service.RestaurantBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * There are no services instance variables defined here, Spring + Tools4AI will dynamically figure out what to call
@@ -40,7 +45,7 @@ public class SAMController {
 
 
     })
-    @GetMapping("/action")
+   // @GetMapping("/action")
     public String actOnPrompt(@RequestParam("prompt") String prompt) {
         AIProcessor processor = new SpringGeminiProcessor(applicationContext);
         try {
@@ -75,7 +80,7 @@ public class SAMController {
 
     }
 
-    @PostMapping("/action")
+  //  @PostMapping("/action")
     public String actOnPromptWithPost(  @RequestParam("car1") String car1,  @RequestParam("car2") String car2) {
         ActionProcessor processor = new SpringGeminiProcessor(applicationContext);
         try {
@@ -85,7 +90,7 @@ public class SAMController {
         }
     }
 
-    @GetMapping("/bookRestaurant")
+  //  @GetMapping("/bookRestaurant")
     public String bookRestaurant(@RequestParam("prompt") String prompt) {
         PromptTransformer processor = new GeminiPromptTransformer();
         try {
@@ -96,7 +101,7 @@ public class SAMController {
 
     }
 
-    @GetMapping("/bookRestaurantWithDetails")
+  //  @GetMapping("/bookRestaurantWithDetails")
     public String findCustomerDetails(@RequestParam("restaurantDetails") String restaurantDetails,@RequestParam("customerDetails") String customerDetails) {
         PromptTransformer processor = new GeminiPromptTransformer();
         try {
@@ -108,14 +113,25 @@ public class SAMController {
         }
 
     }
-
+    @Operation(summary = "Get All the actions available")
     @GetMapping("/getAllActions")
     public String getAllActions() {
          ActionProcessor processor = new ActionProcessor();
          return processor.getActionList();
     }
 
-    @GetMapping("/actionWithName")
+    @Operation(summary = "Get All the actions available for a particular group")
+    @GetMapping("/getAllActionsForGroup")
+    public String getAllActions(String groupName) {
+        return PredictionLoader.getInstance().getActionGroupList().getGroupActions().get((new ActionGroup(groupName)).getGroupInfo());
+    }
+    @Operation(summary = "Provide all the group names - this could be your enterprise applications expsosing rest apis")
+    @GetMapping("/getAllGroupNames")
+    public List<GroupInfo> getAllActionGroups() {
+        return PredictionLoader.getInstance().getActionGroupList().getGroupInfo();
+    }
+
+   // @GetMapping("/actionWithName")
     public String actOnPrompt(@RequestParam("prompt") String prompt, @RequestParam("actionName") String actionName) {
         ActionProcessor processor = new SpringGeminiProcessor(applicationContext);
         try {

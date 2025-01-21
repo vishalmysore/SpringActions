@@ -1,7 +1,7 @@
-package org.example.service;
+package io.github.vishalmysore.service;
 
 import lombok.extern.java.Log;
-import org.example.pojo.RestaurantPojo;
+import io.github.vishalmysore.pojo.RestaurantPojo;
 import org.springframework.stereotype.Service;
 
 @Log

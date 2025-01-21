@@ -1,10 +1,9 @@
-package org.example.service;
+package io.github.vishalmysore.service;
 
 import com.t4a.annotations.Predict;
 import com.t4a.api.JavaMethodAction;
 
 import lombok.extern.java.Log;
-import org.example.service.SimpleService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

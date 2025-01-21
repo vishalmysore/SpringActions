@@ -1,4 +1,4 @@
-package org.example.pojo;
+package io.github.vishalmysore.pojo;
 
 public class RestaurantDetails {
     String name;
