@@ -74,7 +74,7 @@ Sending Multiple Prompts and converting them into Pojo directly before calling s
 
 ## ✍️ Examples
 
-Create new action everytime intead of bean created by Spring
+Create new action everytime instead of bean created by Spring
 ```
 @Autowired
 private ApplicationContext applicationContext;
@@ -115,3 +115,5 @@ Specify action name instead of action being predicted
     }
 
 ```
+
+<!-- I corrected a typo, There's only missing a library that regroup sentiment and use regex to grab a fraction of the last encoding sequence so you can actually feels like this is a smart Agent and not a sinple JS script. Then you simply use this to let your Agent learn to not overfit or underfit the reward and it work as a super Agent for about nothing...(Nice work!) -->
