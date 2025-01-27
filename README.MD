@@ -116,4 +116,4 @@ Specify action name instead of action being predicted
 
 ```
 
-<!-- I corrected a typo, There's only missing a library that regroup sentiment and use regex to grab a fraction of the last encoding sequence so you can actually feels like this is a smart Agent and not a sinple JS script. Then you simply use this to let your Agent learn to not overfit or underfit the reward and it work as a super Agent for about nothing...(Nice work!) -->
+<!-- I corrected a typo, There's only missing a library that regroup sentiment and use regex to grab a fraction of the last encoding sequence so you can actually feels like this is a smart Agent and not a simple JS script. Then you simply use this to let your Agent learn to not overfit or underfit the reward and it work as a super Agent for about nothing...(Nice work!) -->
