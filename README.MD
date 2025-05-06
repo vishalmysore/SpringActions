@@ -1,5 +1,5 @@
 ##  Google A2A Integration with Spring Boot
-Integrate your Spring Boot applications with Google's A2A Protocol. This integration allows any Spring bean to be exposed as an AI-actionable service—no need for extra annotations or custom wiring. 
+Integrate your Spring Boot applications with Google's A2A Protocol using a2ajava. This integration allows any Spring bean to be exposed as an AI-actionable service—no need for extra annotations or custom wiring. 
 
 ✅ Key Features
 - Auto-discovery of Spring Beans as A2A Actions
