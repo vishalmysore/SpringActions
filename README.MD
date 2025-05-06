@@ -1,5 +1,5 @@
 ##  Google A2A Integration with Spring Boot
-Easily integrate your Spring Boot applications with Google's A2A Protocol using the Tools4AI platform. This integration allows any Spring bean to be exposed as an AI-actionable service—no need for extra annotations or custom wiring. 
+Integrate your Spring Boot applications with Google's A2A Protocol. This integration allows any Spring bean to be exposed as an AI-actionable service—no need for extra annotations or custom wiring. 
 
 ✅ Key Features
 - Auto-discovery of Spring Beans as A2A Actions
@@ -38,6 +38,10 @@ public class CompareCarService implements JavaMethodAction {
 
 
 ```
+
+-  A2A card will be available here http://localhost:7860/.well-known/agent.json
+-  MCP Tools will be available here http://localhost:7860/mcp/list-tools
+
 
 At runtime spring will create this service and call it with appropriate values if the prompt matches the action
 
