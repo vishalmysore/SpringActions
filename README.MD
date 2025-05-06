@@ -1,22 +1,38 @@
-# Spring Action
+##  Google A2A Integration with Spring Boot
+Easily integrate your Spring Boot applications with Google's A2A Protocol using the Tools4AI platform. This integration allows any Spring bean to be exposed as an AI-actionable service—no need for extra annotations or custom wiring. 
 
-## 💡 Quick Start
+✅ Key Features
+- Auto-discovery of Spring Beans as A2A Actions
 
-Integrate your spring application with AI actions , uses Tools4AI (https://github.com/vishalmysore/Tools4AI/) platform 
+- Built-in support for prompt-based execution
 
-Any Spring bean can be used as an action for matching prompt , you dont need to define it separately  , for example 
-here we are creating a spring service called Compare car service, this will compare 2 cars and return the best car (in real world)
+- Zero boilerplate integration using @Agent and @Action annotations
+
+- Ideal for building intelligent microservices and AI-enhanced APIs
+
+### Example: Compare Two Cars with AI-Driven Spring Bean
 
 ```
 @Service
 @Log
-@Predict(actionName ="compareCar", description = "Provide 2 cars and compare them")
+@Agent(groupName ="compareCar", groupDescription = "Provide 2 cars and compare them")
 public class CompareCarService implements JavaMethodAction {
+    public CompareCarService() {
+        log.info("created compare car service");
+    }
+    private ActionCallback callback;
+
+    @Action(description = "compare 2 cars")
     public String compareCar(String car1 , String car2) {
+
         log.info(car2);
         log.info(car1);
         // implement the comparison logic here
-        return car2;
+        if((callback!= null) && (callback.getType().equals(CallBackType.A2A.name()))) {
+            log.info("callback is not null");
+            ((Task) callback.getContext()).setDetailedAndMessage(TaskState.COMPLETED, "I compared the car and this is better "+car2 );
+        }
+        return " this is better - "+car2;
     }
 }
 

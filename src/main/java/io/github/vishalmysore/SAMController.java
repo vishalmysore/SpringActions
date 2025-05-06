@@ -3,11 +3,15 @@ package io.github.vishalmysore;
 
 import com.t4a.api.ActionGroup;
 import com.t4a.api.GroupInfo;
-import com.t4a.predict.GeminiPromptTransformer;
+
 import com.t4a.predict.PredictionLoader;
-import com.t4a.predict.PromptTransformer;
+
 import com.t4a.processor.*;
 
+import com.t4a.processor.spring.SpringGeminiProcessor;
+import com.t4a.processor.spring.SpringOpenAIProcessor;
+import com.t4a.transform.GeminiV2PromptTransformer;
+import com.t4a.transform.PromptTransformer;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.java.Log;
@@ -82,7 +86,7 @@ public class SAMController {
 
   //  @PostMapping("/action")
     public String actOnPromptWithPost(  @RequestParam("car1") String car1,  @RequestParam("car2") String car2) {
-        ActionProcessor processor = new SpringGeminiProcessor(applicationContext);
+        AIProcessor processor = new SpringGeminiProcessor(applicationContext);
         try {
             return (String) processor.processSingleAction(" This is car1 "+car1+" this is car2 "+car2);
         } catch (AIProcessingException e) {
@@ -92,7 +96,7 @@ public class SAMController {
 
   //  @GetMapping("/bookRestaurant")
     public String bookRestaurant(@RequestParam("prompt") String prompt) {
-        PromptTransformer processor = new GeminiPromptTransformer();
+        PromptTransformer processor = new GeminiV2PromptTransformer();
         try {
             return restaurantBookingService.bookReservation((RestaurantPojo) processor.transformIntoPojo(prompt,RestaurantPojo.class.getName(),"RestaurantPojo","Build the pojo for restaurant") );
         } catch (AIProcessingException e) {
@@ -103,7 +107,7 @@ public class SAMController {
 
   //  @GetMapping("/bookRestaurantWithDetails")
     public String findCustomerDetails(@RequestParam("restaurantDetails") String restaurantDetails,@RequestParam("customerDetails") String customerDetails) {
-        PromptTransformer processor = new GeminiPromptTransformer();
+        PromptTransformer processor = new GeminiV2PromptTransformer();
         try {
             Customer customer = (Customer)processor.transformIntoPojo(customerDetails,Customer.class.getName(),"Customer","Get the customer details");
             log.info(customer.toString());
@@ -113,12 +117,7 @@ public class SAMController {
         }
 
     }
-    @Operation(summary = "Get All the actions available")
-    @GetMapping("/getAllActions")
-    public String getAllActions() {
-         ActionProcessor processor = new ActionProcessor();
-         return processor.getActionList();
-    }
+
 
     @Operation(summary = "Get All the actions available for a particular group")
     @GetMapping("/getAllActionsForGroup")
@@ -133,7 +132,7 @@ public class SAMController {
 
    // @GetMapping("/actionWithName")
     public String actOnPrompt(@RequestParam("prompt") String prompt, @RequestParam("actionName") String actionName) {
-        ActionProcessor processor = new SpringGeminiProcessor(applicationContext);
+        AIProcessor processor = new SpringGeminiProcessor(applicationContext);
         try {
             return (String) processor.processSingleAction(prompt,actionName);
         } catch (AIProcessingException e) {

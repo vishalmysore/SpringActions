@@ -1,6 +1,8 @@
 package io.github.vishalmysore.service;
 
-import com.t4a.annotations.Predict;
+import com.t4a.annotations.Action;
+import com.t4a.annotations.Agent;
+
 import com.t4a.api.JavaMethodAction;
 
 import lombok.extern.java.Log;
@@ -16,7 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 @Service
 @Log
-@Predict(actionName = "getTemperature",description = "get weather for city")
+@Agent(groupName = "getTemperature",groupDescription = "get weather for city")
 public class WeatherService implements JavaMethodAction {
 
     public WeatherService() {
@@ -25,6 +27,8 @@ public class WeatherService implements JavaMethodAction {
 
     @Autowired
     SimpleService action;
+
+    @Action(description = "get temperature for city")
     public String getTemperature(String cityName) {
         log.info(action+" here ");
         double temperature = 0;
