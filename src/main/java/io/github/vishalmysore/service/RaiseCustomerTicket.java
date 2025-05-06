@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Log
 @Agent(groupName ="raiseTicket", groupDescription = "Create a ticket for customer")
-public class RaiseCustomerTicket implements JavaMethodAction {
+public class RaiseCustomerTicket {
     @Action(description = "Raise a ticket for customer")
     public String raiseTicket(String customerName) {
 

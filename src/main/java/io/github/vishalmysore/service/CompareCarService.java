@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Log
 @Agent(groupName ="compareCar", groupDescription = "Provide 2 cars and compare them")
-public class CompareCarService implements JavaMethodAction {
+public class CompareCarService{
     public CompareCarService() {
         log.info("created compare car service");
     }

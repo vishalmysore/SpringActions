@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Agent(groupName ="whatThisPersonFavFood", groupDescription = "Provide persons name and then find out what does that person like")
 @Slf4j
-public class SimpleService implements JavaMethodAction {
+public class SimpleService {
 
     public SimpleService(){
       log.info(" Created Simple Service");

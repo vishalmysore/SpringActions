@@ -18,17 +18,7 @@ import java.util.Map;
 @RequestMapping("/mcp")
 public class MCPController extends MCPToolsController {
 
-    OpenAiActionProcessor processor = new OpenAiActionProcessor();
 
-    /**
-     * By default it uses Gemini , here you can configure OpenAI processor and set the
-     * key in tools4ai.prooperties or set as VM -DopenAiKey parameter
-     * @return
-     */
-    @Override
-    public AIProcessor getBaseProcessor() {
-        return processor;
-    }
 
     SseEmitter lastEmitter;
    // @GetMapping("/sse")

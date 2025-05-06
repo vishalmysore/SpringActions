@@ -19,7 +19,7 @@ import java.net.URL;
 @Service
 @Log
 @Agent(groupName = "getTemperature",groupDescription = "get weather for city")
-public class WeatherService implements JavaMethodAction {
+public class WeatherService  {
 
     public WeatherService() {
         log.info("created weather service");
