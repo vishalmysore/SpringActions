@@ -59,17 +59,6 @@ At runtime spring will create this service and call it with appropriate values i
 
     }
 ```
-As you can see the controller does not need to have the service instances , its mapped by Tools4AI automatically based on prompts
-At runtime ```SpringAwareActionProcessor``` takes care of mapping prompts to Spring Beans , they can either be spring bean service
-or a component
-
-Also you can convert any prompt to Java Pojo
-
-``` 
-String promptText ="can you book maharaja restaurant for 4 people on Indian Independence day in Toronto , my name is Vishal ";
-PojoBuilder processor = new PojoBuilder();
-RestaurantPojo pojo = (RestaurantPojo)processor.buildPojo(promptText,RestaurantPojo.class.getName(),"RestaurantPojo","Build the pojo for restaurant")
-```  
 
 
 ## 📝 set up
@@ -77,61 +66,3 @@ RestaurantPojo pojo = (RestaurantPojo)processor.buildPojo(promptText,RestaurantP
 
 and then
 ```mvn spring-boot:run```
-
-Once you visit http://localhost:8080/swagger-ui/index.html and provide any prompt appropriate action will be called 
-
-For example in below case car compare service will be called automatically based on the prompt
-
-<img src="swagger.PNG">
-
-Sending Multiple Prompts and converting them into Pojo directly before calling service 
-
-<img src="swagger2.PNG">  
-
-
-<br>   
-
-
-## ✍️ Examples
-
-Create new action everytime intead of bean created by Spring
-```
-@Autowired
-private ApplicationContext applicationContext;
-@GetMapping("/action")
-public String actOnPrompt(@RequestParam("prompt") String prompt) {
-ActionProcessor processor = new ActionProcessor();
-try {
-return (String) processor.processSingleAction(prompt);
-} catch (AIProcessingException e) {
-throw new RuntimeException(e);
-}
-
-    }
-
-```
-
-Get List of all available actions
-```
-    @GetMapping("/getAllActions")
-    public String getAllActions() {
-         ActionProcessor processor = new ActionProcessor();
-         return processor.getActionList();
-    }
-
-```
-Specify action name instead of action being predicted 
-
-```
- @GetMapping("/actionWithName")
-    public String actOnPrompt(@RequestParam("prompt") String prompt, @RequestParam("actionName") String actionName) {
-        SpringAwareActionProcessor processor = new SpringAwareActionProcessor(applicationContext);
-        try {
-            return (String) processor.processSingleAction(prompt,actionName);
-        } catch (AIProcessingException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-```

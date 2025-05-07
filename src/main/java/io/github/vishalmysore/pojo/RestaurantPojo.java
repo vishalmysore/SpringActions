@@ -1,5 +1,9 @@
 package io.github.vishalmysore.pojo;
 
+/**
+ *  * These are all your pojos that are used to send data to the AI processor.
+ *  * They will get automatically populated based on the NLP
+ */
 public class RestaurantPojo {
     String name;
     int numberOfPeople;

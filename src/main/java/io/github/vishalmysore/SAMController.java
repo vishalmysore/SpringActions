@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
+ * This is the expose the agentic actions without any protocol
  * There are no services instance variables defined here, Spring + Tools4AI will dynamically figure out what to call
  * based on the prompt
  */
