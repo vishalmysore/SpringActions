@@ -78,3 +78,9 @@ At runtime spring will create this service and call it with appropriate values i
 
 and then
 ```mvn spring-boot:run```
+
+
+## Screenshots
+![Adding agent](a2a_agent.png)  
+![Conversatin](a2a_conversation.png)
+![Events](3c426134-d029-4857-8925-0f17c5993bf1.jpg) 
