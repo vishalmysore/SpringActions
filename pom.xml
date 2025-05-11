@@ -41,7 +41,7 @@
         <dependency>
             <groupId>io.github.vishalmysore</groupId>
             <artifactId>a2ajava</artifactId>
-            <version>0.0.7.2</version>
+            <version>0.0.7.5</version>
         </dependency>
 
 
@@ -49,7 +49,7 @@
         <dependency>
             <groupId>io.github.vishalmysore</groupId>
             <artifactId>tools4ai</artifactId>
-            <version>1.0.7.5</version>
+            <version>1.0.8</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

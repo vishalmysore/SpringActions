@@ -10,15 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/.well-known/")
+@RequestMapping(RealTimeAgentCardController.WELL_KNOWN_PATH)
 public class MyA2ACardController extends RealTimeAgentCardController {
 
 
-    @GetMapping(value = "/agent.json", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = RealTimeAgentCardController.AGENT_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AgentCard> getAgentCardForMyApp() {
         AgentCard card = getCachedAgentCard();
-
-        card.setUrl("http://localhost:7860"); //  Replace with actual URL
         return ResponseEntity.ok(card);
 
     }
