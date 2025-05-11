@@ -81,6 +81,15 @@ and then
 
 
 ## Screenshots
-![Adding agent](a2a_agent.png)  
+add agets to the ui  
+
+![Adding agent](a2a_agent.png)
+
+chatting with agent   
 ![Conversatin](a2a_conversation.png)
+
+events being generated  
 ![Events](3c426134-d029-4857-8925-0f17c5993bf1.jpg) 
+
+multiple agents in same ui  
+![Multiple agents](multiple.png)
