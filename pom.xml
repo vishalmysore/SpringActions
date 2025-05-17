@@ -41,7 +41,7 @@
         <dependency>
             <groupId>io.github.vishalmysore</groupId>
             <artifactId>a2ajava</artifactId>
-            <version>0.0.7.5</version>
+            <version>0.0.7.8</version>
         </dependency>
 
 
@@ -50,6 +50,22 @@
             <groupId>io.github.vishalmysore</groupId>
             <artifactId>tools4ai</artifactId>
             <version>1.0.8</version>
+            <exclusions>
+                <!-- Common Swagger/OpenAPI dependencies to exclude -->
+                <exclusion>
+                    <groupId>io.swagger.core.v3</groupId>
+                    <artifactId>swagger-core</artifactId>
+                </exclusion>
+                <!-- Exclude swagger-core-jakarta -->
+                <exclusion>
+                    <groupId>io.swagger.core.v3</groupId>
+                    <artifactId>swagger-core-jakarta</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.swagger.parser.v3</groupId>
+                    <artifactId>swagger-parser</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
