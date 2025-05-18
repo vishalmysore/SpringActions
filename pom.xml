@@ -41,7 +41,7 @@
         <dependency>
             <groupId>io.github.vishalmysore</groupId>
             <artifactId>a2ajava</artifactId>
-            <version>0.0.7.8</version>
+            <version>0.0.7.10</version>
         </dependency>
 
 

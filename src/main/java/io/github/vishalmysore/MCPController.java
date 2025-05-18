@@ -19,7 +19,10 @@ import java.util.Map;
 @RequestMapping("/mcp")
 public class MCPController extends MCPToolsController {
 
-
+    @GetMapping("/server-config")
+    public ResponseEntity<Map<String, String>> getServerConfig() {
+        return super.getServerConfig();
+    }
 
     SseEmitter lastEmitter;
    // @GetMapping("/sse")
