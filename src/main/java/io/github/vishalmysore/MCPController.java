@@ -59,26 +59,6 @@ public class MCPController extends MCPToolsController {
 
     @PostMapping("/call-tool")
     public ResponseEntity<JSONRPCResponse> callTool(@RequestBody ToolCallRequest request) {
-//        log.info("Received request: " + request);
-//
-//        // Construct the actual business response
-//        CallToolResult result = new CallToolResult();
-//        TextContent content = new TextContent();
-//        content.setText("created");
-//        content.setType("text");
-//
-//        List<Content> contentList = new ArrayList<>();
-//        contentList.add(content);
-//        result.setContent(contentList);
-//
-//        // Wrap in JSON-RPC envelope
-//        JSONRPCResponse response = new JSONRPCResponse();
-//        response.setId("133");
-//        //response.setId(request.get);
-//        response.setResult(result);
-//
-//        return ResponseEntity.ok(response);
-
          CallToolResult result = super.callTool(request, new MCPActionCallback());
               log.info("Received result: " + result);
         JSONRPCResponse response = new JSONRPCResponse();
@@ -91,8 +71,6 @@ public class MCPController extends MCPToolsController {
     public ResponseEntity<CallToolResult> cancelNotification(@RequestBody CancelledNotification request) {
         log.info("Received cancel notification for: " + request);
 
-
-
-        return ResponseEntity.ok(null);
+       return ResponseEntity.ok(null);
     }
 }
