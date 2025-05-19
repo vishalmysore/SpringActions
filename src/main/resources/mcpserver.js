@@ -20,7 +20,7 @@ const server = new Server({
 // Handler: List tools from Spring Boot
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   try {
-    const response = await fetch("http://localhost:7860/mcp/list-tools", {
+    const response = await fetch("http://localhost:7860/v1/tools", {
       method: "GET",
       headers: { "Content-Type": "application/json" }
     });
@@ -52,7 +52,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }, null, 2);
   //  await logToFile(outgoingRequestLog);
 
-    const response = await fetch("http://localhost:7860/mcp/call-tool", {
+    const response = await fetch("http://localhost:7860/v1/tools/call", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
