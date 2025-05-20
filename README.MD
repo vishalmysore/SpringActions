@@ -15,12 +15,9 @@ Integrate your Spring Boot applications with Google's A2A Protocol using a2ajava
 
 ✅ Key Features
 - Auto-discovery of Spring Beans as A2A Actions
-
 - Built-in support for prompt-based execution
-
 - Zero boilerplate integration using @Agent and @Action annotations
-
-- Ideal for building intelligent microservices and AI-enhanced APIs
+- Ideal for building intelligent microservices and AI-enhanced APIs  
 
 ### Example: Compare Two Cars with AI-Driven Spring Bean
 
