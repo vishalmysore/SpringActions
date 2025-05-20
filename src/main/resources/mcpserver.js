@@ -86,8 +86,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     // json remove attribute _meta
 
     const res = data.result;
-    delete res._meta;
-    delete res.isError;
+    //delete res._meta;
+   // delete res.isError;
     // console.log("Received response from Spring Boot:", res);
     return res; // Must match CallToolResponseSchema
   } catch (error) {
