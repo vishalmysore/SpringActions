@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Actions - A2A & MCP Integration Framework</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #34495e;
+            --light-bg: #f8f9fa;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            padding-top: 60px;
+        }
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+        .feature-card {
+            border: none;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .code-block {
+            background: #282c34;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .protocol-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        .a2a-badge {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .mcp-badge {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        .architecture-diagram {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Spring Actions</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#architecture">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#integration">Integration</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testing">Testing</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="container text-center">
+            <h1 class="display-4">Spring Actions</h1>
+            <p class="lead">A2A & MCP Integration Framework</p>
+            <div class="mt-4">
+                <span class="protocol-badge a2a-badge">Google A2A</span>
+                <span class="protocol-badge mcp-badge">Anthropic MCP</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <section id="overview" class="mb-5">
+            <h2>Overview</h2>
+            <p class="lead">
+                Spring Actions is a powerful framework that enables your Spring Boot applications to communicate with AI agents through multiple protocols. The framework supports both Google's Agent-to-Agent (A2A) protocol and Anthropic's Model Context Protocol (MCP).
+                <a href="https://github.com/vishalmysore/a2ajava" target="_blank">a2ajava</a> is a Swiss Army knife for building agentic applications. It is multi-protocol — works seamlessly with both A2A (Agent-to-Agent) and MCP (Model Context Protocol). It is multi-language — supports Java, Kotlin, and Groovy. It is multi-platform — compatible with Gemini, OpenAI, Claude, and Grok. It is multi-client — includes A2A and MCP clients with connectors in Java, Node, and Python. It offers multi-integration — out-of-the-box support for Selenium, human-in-the-loop workflows, and multi-LLM voting for consensus-based decision making. Agents built using the A2A protocol with a2ajava run seamlessly on MCP as well, ensuring maximum interoperability across platforms.
+
+            </p>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">🤖 A2A Protocol</h5>
+                            <p class="card-text">
+                                Google's A2A protocol enables seamless communication between AI agents and services through a standardized discovery and interaction format.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">🔧 MCP Protocol</h5>
+                            <p class="card-text">
+                                Anthropic's MCP provides structured interactions between AI models and external tools with runtime validation and standardized error handling.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture" class="mb-5">
+            <h2>Architecture</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="a2a_agent.png" alt="Architecture Diagram" class="architecture-diagram">
+                    <div class="mt-4">
+                        <h4>Key Components</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>A2A Integration:</strong> Automatic service discovery and agent card generation
+                            </li>
+                            <li class="list-group-item">
+                                <strong>MCP Tools:</strong> Structured tool definitions with parameter validation
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Spring Services:</strong> Annotation-based service exposure with @Agent and @Action
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="integration" class="mb-5">
+            <h2>Integration Methods</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>A2A Integration</h4>
+                    <div class="code-block">
+                        <p>Agent Card Endpoint:</p>
+                        <code>https://vishalmysore-a2amcpspring.hf.space/.well-known/agent.json</code>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>MCP Integration</h4>
+                    <div class="code-block">
+                        <p>MCP Connector Configuration:</p>
+<pre><code class="language-json">{
+    "customerservice": {
+        "command": "java",
+        "args": [
+            "-jar",
+            "/work/a2a-mcp-bridge/target/mcp-connector-full.jar",
+            "https://vishalmysore-a2amcpspring.hf.space/"
+        ],
+        "timeout": 30000
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testing" class="mb-5">
+            <h2>Testing Methods</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Local Testing</h5>
+                            <p class="card-text">Access Swagger UI at:</p>
+                            <code>http://localhost:7860/swagger-ui/index.html</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Demo Environment</h5>
+                            <p class="card-text">Access deployed demo at:</p>
+                            <code>https://vishalmysore-a2amcpspring.hf.space/swagger-ui/index.html</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <h4>Testing Examples</h4>
+                <div class="code-block">
+                    <p>MCP List Tools:</p>
+<pre><code class="language-bash">curl -H "Content-Type: application/json" -d '{
+    "jsonrpc": "2.0",
+    "method": "tools/list",
+    "params": {},
+    "id": 1
+}' https://vishalmysore-a2amcpspring.hf.space/</code></pre>
+                </div>
+
+                <div class="code-block">
+                    <p>MCP Tool Call:</p>
+<pre><code class="language-json">{
+    "method": "tools/call",
+    "params": {
+        "name": "whatThisPersonFavFood",
+        "arguments": {
+            "provideAllValuesInPlainEnglish": "vishal is coming home what should i cook"
+        }
+    },
+    "jsonrpc": "2.0",
+    "id": 17
+}</code></pre>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p>Built with ❤️ using Spring Boot, A2A, and MCP</p>
+            <p>
+                <a href="https://github.com/vishalmysore/a2ajava" target="_blank" class="text-decoration-none">A2AJava</a> | 
+                <a href="https://github.com/vishalmysore/mcp-connector" target="_blank" class="text-decoration-none">MCP Connector</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</body>
+</html>

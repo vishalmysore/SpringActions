@@ -7,6 +7,7 @@ import com.t4a.api.JavaMethodAction;
 
 import com.t4a.detect.ActionCallback;
 import com.t4a.detect.ActionState;
+import com.t4a.processor.AIProcessor;
 import io.github.vishalmysore.a2a.domain.Task;
 import io.github.vishalmysore.a2a.domain.TaskState;
 import io.github.vishalmysore.common.CallBackType;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
  * It will get automatically exposed as a tool in the A2A framework
  * This is the service class which will be used to compare 2 cars
  *
+ * Each action has access to AIProcessor and ActionCallback which are autowired by tools4ai
  */
 @Service
 @Log
@@ -26,7 +28,16 @@ public class CompareCarService{
     public CompareCarService() {
         log.info("created compare car service");
     }
+
+    /**
+     * Each action has access to AIProcessor and ActionCallback which are autowired by tools4ai
+     */
     private ActionCallback callback;
+
+    /**
+     * Each action has access to AIProcessor and ActionCallback which are autowired by tools4ai
+     */
+    private AIProcessor processor;
 
     @Action(description = "compare 2 cars")
     public String compareCar(String car1 , String car2) {
