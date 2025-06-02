@@ -50,7 +50,7 @@ public class SAMController {
 
 
     })
-   // @GetMapping("/action")
+    @GetMapping("/action")
     public String actOnPrompt(@RequestParam("prompt") String prompt) {
         AIProcessor processor = new SpringGeminiProcessor(applicationContext);
         try {
