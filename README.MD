@@ -49,8 +49,34 @@ public class CompareCarService implements JavaMethodAction {
 ```
 
 -  A2A card will be available here http://localhost:7860/.well-known/agent.json
--  MCP Tools will be available here http://localhost:7860/mcp/list-tools
+-  MCP Tools can be integrated to claude desktop via passthrough server[connector](https://github.com/vishalmysore/mcp-connector/) 
 
+or you can use curl command to get the list of MCP tools
+
+```bash
+curl -H "Content-Type: application/json" -d '{
+    "jsonrpc": "2.0",
+    "method": "tools/list",
+    "params": {},
+    "id": 1
+}' http://localhost:7860/
+
+```
+use curl command to call a specific tool
+
+```bash
+{
+    "method": "tools/call",
+    "params": {
+        "name": "whatThisPersonFavFood",
+        "arguments": {
+            "provideAllValuesInPlainEnglish": "vishal is coming home what should i cook"
+        }
+    },
+    "jsonrpc": "2.0",
+    "id": 17
+}
+```
 
 At runtime spring will create this service and call it with appropriate values if the prompt matches the action
 
