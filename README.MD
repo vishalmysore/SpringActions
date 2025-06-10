@@ -4,6 +4,7 @@
 Integrate your Spring Boot applications with Google's A2A Protocol and Anthropic's Model Context Protocol (MCP) using a2ajava. This integration allows any Spring bean to be exposed as an AI-actionable service—no need for extra annotations or custom wiring.  
 **A2AJava is the Java implementation** of the Google A2A protocol you can check the project [here](https://github.com/vishalmysore/a2ajava) .  
 
+Live Demo of this server is available [here](https://huggingface.co/spaces/VishalMysore/a2amcpspring)
 ### What is A2A?
 A2A (Agent-to-Agent) is Google's protocol that enables AI agents to discover and interact with services through a standardized format. It makes services discoverable and executable by AI systems.
 
@@ -49,7 +50,7 @@ public class CompareCarService implements JavaMethodAction {
 ```
 
 -  A2A card will be available here http://localhost:7860/.well-known/agent.json
--  MCP Tools can be integrated to claude desktop via passthrough server[connector](https://github.com/vishalmysore/mcp-connector/) 
+-  MCP Tools can be integrated to claude desktop via passthrough server [connector](https://github.com/vishalmysore/mcp-connector/) 
 
 or you can use curl command to get the list of MCP tools
 
@@ -78,22 +79,7 @@ use curl command to call a specific tool
 }
 ```
 
-At runtime spring will create this service and call it with appropriate values if the prompt matches the action
 
-```
-   @Autowired
-    private ApplicationContext applicationContext;
-    @GetMapping("/action")
-    public String actOnPrompt(@RequestParam("prompt") String prompt) {
-        SpringAwareActionProcessor processor = new SpringAwareActionProcessor(applicationContext);
-        try {
-            return (String) processor.processSingleAction(prompt);
-        } catch (AIProcessingException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-```
 
 
 ## 📝 set up
