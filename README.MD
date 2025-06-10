@@ -5,6 +5,10 @@ Integrate your Spring Boot applications with Google's A2A Protocol and Anthropic
 **A2AJava is the Java implementation** of the Google A2A protocol you can check the project [here](https://github.com/vishalmysore/a2ajava) .  
 
 Live Demo of this server is available [here](https://huggingface.co/spaces/VishalMysore/a2amcpspring)
+
+This server exposes spring bean actions as A2A and MCP tools, allowing AI agents to discover and interact with them seamlessly.
+You can integrate this with Claude Desktop client or VS client or a2a client or simple rest client 
+
 ### What is A2A?
 A2A (Agent-to-Agent) is Google's protocol that enables AI agents to discover and interact with services through a standardized format. It makes services discoverable and executable by AI systems.
 
