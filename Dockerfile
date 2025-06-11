@@ -4,7 +4,7 @@ FROM openjdk:18
 WORKDIR /ai
 
 # Define the version as a build argument
-ARG VERSION=0.0.3
+ARG VERSION=0.2.3
 ARG REPO=SpringActions
 ARG REPO_OWNER=vishalmysore
 
