@@ -29,14 +29,14 @@ Integrate your Spring Boot applications with Google's A2A Protocol using a2ajava
 ```
 @Service
 @Log
-@Agent(groupName ="compareCar", groupDescription = "Provide 2 cars and compare them")
-public class CompareCarService implements JavaMethodAction {
+@Agent(groupName ="compareCar", groupDescription = "Provide 2 cars and compare them", prompt = "You are an expert car reviewer. You will be given 2 car names and you have to compare them and tell which one is better and why.")
+public class CompareCarService implements A1uiAware, ProcessorAware {
     public CompareCarService() {
         log.info("created compare car service");
     }
     private ActionCallback callback;
 
-    @Action(description = "compare 2 cars")
+    @Action(description = "compare 2 cars", prompt = "You will be given 2 car names and you have to compare them and tell which one is better and why.")
     public String compareCar(String car1 , String car2) {
 
         log.info(car2);

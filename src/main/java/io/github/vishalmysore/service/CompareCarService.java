@@ -3,6 +3,7 @@ package io.github.vishalmysore.service;
 import com.t4a.annotations.Action;
 import com.t4a.annotations.Agent;
 
+import com.t4a.annotations.Prompt;
 import com.t4a.api.JavaMethodAction;
 
 import com.t4a.detect.ActionCallback;
@@ -27,7 +28,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Log
-@Agent(groupName ="compareCar", groupDescription = "Provide 2 cars and compare them")
+@Agent(groupName ="compareCar", groupDescription = "Provide 2 cars and compare them" ,prompt = "make sure you only provide non ev vehcile")
 public class CompareCarService implements A2UIAware, ProcessorAware {
     public CompareCarService() {
         log.info("created compare car service");
@@ -35,9 +36,10 @@ public class CompareCarService implements A2UIAware, ProcessorAware {
 
 
 
-    @Action(description = "compare 2 cars")
-    public String compareCar(String car1 , String car2) {
+    @Action(description = "compare 2 cars",prompt = "dont provide colors")
+    public String compareCar(@Prompt(describe = "use only car and not truck") String car1 , String car2) throws AIProcessingException {
 
+        getProcessor().query("get me latest price of the toyota car after researching on the web");;
         log.info(car2);
         log.info(car1);
         // implement the comparison logic here

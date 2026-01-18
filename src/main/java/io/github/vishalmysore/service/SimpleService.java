@@ -9,6 +9,7 @@ import com.t4a.detect.ActionCallback;
 import com.t4a.processor.AIProcessor;
 import com.t4a.processor.ActionCallbackAware;
 import com.t4a.processor.ProcessorAware;
+import io.github.vishalmysore.a2ui.A2UIAware;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Agent(groupName ="whatThisPersonFavFood", groupDescription = "Provide persons name and then find out what does that person like")
 @Slf4j
-public class SimpleService implements ActionCallbackAware, ProcessorAware {
+public class SimpleService  implements A2UIAware, ProcessorAware {
 
 
 
@@ -35,6 +36,7 @@ public class SimpleService implements ActionCallbackAware, ProcessorAware {
             return "aloo kofta";
         }else
             return "something yummy";
+
     }
 
 }
