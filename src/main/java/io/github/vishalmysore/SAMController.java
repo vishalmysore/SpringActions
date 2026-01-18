@@ -12,6 +12,7 @@ import com.t4a.processor.spring.SpringGeminiProcessor;
 import com.t4a.processor.spring.SpringOpenAIProcessor;
 import com.t4a.transform.GeminiV2PromptTransformer;
 import com.t4a.transform.PromptTransformer;
+
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.java.Log;
@@ -34,12 +35,15 @@ import java.util.List;
  */
 @Log
 @RestController
-public class SAMController {
+public class SAMController  {
 
     @Autowired
     private ApplicationContext applicationContext;
     @Autowired
     private RestaurantBookingService restaurantBookingService;
+
+
+
     @Operation(summary = "Execute any action based on prompt", description = " Try out with any of these prompts <br>" +
             " 1) My Customer name is Vishal , his computer needs repair <br>" +
             " 2) Can you compare Honda City to Toyota Corolla <br>" +

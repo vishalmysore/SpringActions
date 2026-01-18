@@ -7,6 +7,8 @@ import com.t4a.api.JavaMethodAction;
 
 import com.t4a.detect.ActionCallback;
 import com.t4a.processor.AIProcessor;
+import com.t4a.processor.ProcessorAware;
+import io.github.vishalmysore.a2ui.A2UIAware;
 import lombok.extern.java.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,17 +23,17 @@ import java.net.URL;
 @Service
 @Log
 @Agent(groupName = "getTemperature",groupDescription = "get weather for city")
-public class WeatherService  {
+public class WeatherService  implements A2UIAware, ProcessorAware {
 
     /**
      * Each action has access to AIProcessor and ActionCallback which are autowired by tools4ai
      */
-    private ActionCallback callback;
+
 
     /**
      * Each action has access to AIProcessor and ActionCallback which are autowired by tools4ai
      */
-    private AIProcessor processor;
+
     public WeatherService() {
         log.info("created weather service");
     }

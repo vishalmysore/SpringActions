@@ -7,23 +7,22 @@ import com.t4a.api.JavaMethodAction;
 
 import com.t4a.detect.ActionCallback;
 import com.t4a.processor.AIProcessor;
+import com.t4a.processor.ActionCallbackAware;
+import com.t4a.processor.ProcessorAware;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+/**
+ * Each action has access to AIProcessor and ActionCallback which are autowired by tools4ai
+ * Each action has access to AIProcessor and ActionCallback which are autowired by tools4ai
+ */
 @Service
 @Agent(groupName ="whatThisPersonFavFood", groupDescription = "Provide persons name and then find out what does that person like")
 @Slf4j
-public class SimpleService {
+public class SimpleService implements ActionCallbackAware, ProcessorAware {
 
-    /**
-     * Each action has access to AIProcessor and ActionCallback which are autowired by tools4ai
-     */
-    private ActionCallback callback;
 
-    /**
-     * Each action has access to AIProcessor and ActionCallback which are autowired by tools4ai
-     */
-    private AIProcessor processor;
+
     public SimpleService(){
       log.info(" Created Simple Service");
     }

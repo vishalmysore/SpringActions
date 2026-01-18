@@ -37,3 +37,9 @@ build/
 ### Mac OS ###
 .DS_Store
 /src/main/resources/node_modules/
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/copilot.data.migration.ask.xml
+/.idea/copilot.data.migration.ask2agent.xml
+/src/main/resources/static/food.png
+/src/main/resources/package-lock.json
+/.idea/codeStyles/Project.xml

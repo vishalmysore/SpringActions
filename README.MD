@@ -83,7 +83,28 @@ use curl command to call a specific tool
 }
 ```
 
+```bash
 
+curl -v -H "Content-Type: application/json" -d '{
+"jsonrpc": "2.0",
+"method": "tasks/send",
+"params": {
+"id": "999789",
+"sessionId": "sdf44555",
+"message": {
+"role": "user",
+"parts": [
+{
+"type": "text",
+"text": "should i buy honda or fiat.",
+"metadata": null
+}
+]
+}
+}
+}' https://vishalmysore-a2amcpspring.hf.space/
+
+```
 
 
 ## 📝 set up
